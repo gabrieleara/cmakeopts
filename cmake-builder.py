@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Runs the specified list of commands using the given arguments.
+A simple script for building CMake projects (best combined with CMakeOpts).
 """
 
 import argparse
@@ -93,7 +93,7 @@ def do_configure(options):
         "-DCPACK_ENABLE_DEB='{}'".format(options.package_deb),
         "-DCPACK_ENABLE_RPM='{}'".format(options.package_rpm),
         "-DCMAKE_FORCE_COLORED_OUTPUT='{}'".format(options.colorize),
-        "-DBUILD_DOC='{}'".format(options.docs),
+        "-DCMAKE_ENABLE_BUILD_DOC='{}'".format(options.docs),
     ]
 
     # Append additional cmake options supplied manually by the user
@@ -255,7 +255,7 @@ def arguments_parser():
 
     parser = argparse.ArgumentParser(
         prog=sys.argv[0],
-        description='Multiple commands are executed in order, except \'help\', '
+        description=__doc__ + '\n\nMultiple commands are executed in order, except \'help\', '
         'which will always be the only one executed if included.',
         formatter_class=fmter,
         add_help=False,

@@ -37,5 +37,5 @@ include(GNUInstallDirs)
 
 # -------------------- Subdirectories -------------------- #
 
-add_subdirectory(docs)
-add_subdirectory(packaging)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/docs)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/packaging)

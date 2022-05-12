@@ -15,6 +15,8 @@
 #
 # - LIBRARY_SOVERSION       Library SOVERSION number
 #
+# - LIBRARY_SOURCE_FILES    List of source files for the library
+#
 # - LIBRARY_INCLUDEDIR      Directory for public library include files.
 #                           Additional interface/private directories for include
 #                           files can be added using the INTERFACE or PRIVATE
@@ -31,7 +33,7 @@
 include(GNUInstallDirs)
 
 add_library(${LIBRARY_NAME} ${LIBRARY_TYPE}
-    ${SOURCE_FILES}
+    ${LIBRARY_SOURCE_FILES}
 )
 
 # Setting the version of the shared library

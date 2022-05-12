@@ -11,3 +11,5 @@ INPUT                  = "@PROJECT_SOURCE_DIR@"
 RECURSIVE              = YES
 ENABLE_PREPROCESSING   = YES
 LATEX_CMD_NAME         = latex
+EXCLUDE_PATTERNS      += */cmakeopts/*
+EXCLUDE_PATTERNS      += builder.py
