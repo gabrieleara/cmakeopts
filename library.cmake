@@ -18,10 +18,10 @@
 # - LIBRARY_SOURCE_FILES    List of source files for the library
 #
 # - LIBRARY_INCLUDEDIR      Directory for public library include files.
-#                           Additional interface/private directories for include
-#                           files can be added using the INTERFACE or PRIVATE
-#                           keyword before specifying the directory, prefixed
-#                           with "${CMAKE_CURRENT_SOURCE_DIR}/" .
+#
+# - LIBRARY_INCLUDEDIR_PRIVATE Directory for private library include files.
+#
+# - LIBRARY_INCLUDEDIR_INTERFACE Directory for interface library include files.
 #
 # - LIBRARY_PROPERTIES      A list of properties to be set on the given library
 #                           (optional)
@@ -47,6 +47,8 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES
 # this case, "${LIBRARY_INCLUDEDIR}" directory will be exported, while "private"
 # directory will not and will only be used to build the library itself
 target_include_directories(${LIBRARY_NAME}
+    INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/${LIBRARY_INCLUDEDIR_INTERFACE}
+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${LIBRARY_INCLUDEDIR_PRIVATE}
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${LIBRARY_INCLUDEDIR}
 )
 
