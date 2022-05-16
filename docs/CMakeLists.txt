@@ -1,4 +1,4 @@
-# Option to disable generating documentation (default OFF)
+# Argument to disable generating documentation (default OFF)
 option(CMAKE_ENABLE_BUILD_DOC "Build documentation" OFF)
 
 if (CMAKE_ENABLE_BUILD_DOC)
