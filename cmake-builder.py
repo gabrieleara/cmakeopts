@@ -52,7 +52,13 @@ def runcmd(cmd, quiet=False, exit=True):
         cmd += ' >/dev/null'
     e = os.system(cmd)
     if exit and e:
-        sys.exit(int(e))
+        print("+-- EXIT CODE:", e)
+        e = int(e)
+        # For some reason, having values greater than 127
+        # may give some problems to outer shells
+        if (e > 127):
+            e = 1
+        sys.exit(e)
     return e
 
 
