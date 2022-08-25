@@ -17,6 +17,8 @@
 #
 # - LIBRARY_SOURCE_FILES    List of source files for the library
 #
+# - LIBRARY_PRECOMPILED_HEADER_FILES List of header files to precompile
+#
 # - LIBRARY_INCLUDEDIR      Directory for public library include files.
 #
 # - LIBRARY_INCLUDEDIR_PRIVATE Directory for private library include files.
@@ -51,6 +53,9 @@ target_include_directories(${LIBRARY_NAME}
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${LIBRARY_INCLUDEDIR_PRIVATE}
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${LIBRARY_INCLUDEDIR}
 )
+
+# Precompiled header files
+target_precompile_headers(${LIBRARY_NAME} PUBLIC ${LIBRARY_PRECOMPILED_HEADER_FILES})
 
 target_link_libraries(${LIBRARY_NAME}
     PUBLIC ${LIBRARY_DEPENDENCIES}
