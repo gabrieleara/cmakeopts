@@ -100,6 +100,7 @@ def do_configure(options):
         "-DCPACK_ENABLE_RPM='{}'".format(options.package_rpm),
         "-DCMAKE_FORCE_COLORED_OUTPUT='{}'".format(options.colorize),
         "-DCMAKE_ENABLE_BUILD_DOC='{}'".format(options.docs),
+        "-DBUILD_TESTING='{}'".format(options.testing),
     ]
 
     # Append additional cmake options supplied manually by the user
@@ -164,11 +165,15 @@ def do_package(options):
 
 
 def do_test(options):
+    options.testing='ON'
+
     do_build(options)
+
+    print(" +------- Running CTEST ")
 
     cmd = [
         '{} ctest'.format('GTEST_COLOR=1' if options.colorize else ''),
-        "-C '{}".format(options.build_type),
+        "-C '{}'".format(options.build_type),
         '-V' if options.verbose else '--progress',
     ]
 
@@ -426,6 +431,7 @@ def main():
     options.package_rpm = onoff(options.package_rpm)
     options.generator = check_generator(options.generator)
     options.cmake_option = options.cmake_option if options.cmake_option else []
+    options.testing = 'OFF'
 
     options.dir_project = os.path.realpath(
         os.path.dirname(os.path.realpath(__file__)) + '/..')
