@@ -174,7 +174,8 @@ def do_test(options):
     cmd = [
         '{} ctest'.format('GTEST_COLOR=1' if options.colorize else ''),
         "-C '{}'".format(options.build_type),
-        '-V' if options.verbose else '--progress',
+        '-v' if options.verbose is 'ON' else '--progress',
+        '--output-on-failure',
     ]
 
     cwd = os.getcwd()
