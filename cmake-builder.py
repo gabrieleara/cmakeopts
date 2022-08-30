@@ -174,7 +174,7 @@ def do_test(options):
     cmd = [
         '{} ctest'.format('GTEST_COLOR=1' if options.colorize else ''),
         "-C '{}'".format(options.build_type),
-        '-v' if options.verbose is 'ON' else '--progress',
+        '-v' if options.verbose == 'ON' else '--progress',
         '--output-on-failure',
     ]
 
